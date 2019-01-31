@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,12 +24,12 @@ public class DriveSubsystem extends Subsystem {
 
 
   // Motor Controller Objects
-  public Victor leftMaster = new Victor(RobotMap.leftMasterPort);
-  public Victor leftSlave = new Victor(RobotMap.leftSlavePort);
+  public PWMVictorSPX leftMaster = new PWMVictorSPX(RobotMap.leftMasterPort);
+  public PWMVictorSPX leftSlave = new PWMVictorSPX(RobotMap.leftSlavePort);
   public SpeedControllerGroup left = new SpeedControllerGroup(leftMaster, leftSlave);
 
-  public Victor rightMaster = new Victor(RobotMap.rightMasterPort);
-  public Victor rightSlave = new Victor(RobotMap.rightSlavePort);
+  public PWMVictorSPX rightMaster = new PWMVictorSPX(RobotMap.rightMasterPort);
+  public PWMVictorSPX rightSlave = new PWMVictorSPX(RobotMap.rightSlavePort);
   public SpeedControllerGroup right = new SpeedControllerGroup(rightMaster, rightSlave);
 
   // DifferentialDrive object

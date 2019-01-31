@@ -24,6 +24,7 @@ import frc.robot.subsystems.DriveSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+  // initialize DriveSubsystem
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   
   public static OI oi;
