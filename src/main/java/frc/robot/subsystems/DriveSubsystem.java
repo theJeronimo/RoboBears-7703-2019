@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -40,6 +39,10 @@ public class DriveSubsystem extends Subsystem {
     
     if (Math.abs(move) < 0.10) {
       move = 0;
+    } 
+
+    if (Math.abs(move) > 0.5) {
+      move = 0.5;
     } 
 
     if (Math.abs(turn) < 0.10) {
