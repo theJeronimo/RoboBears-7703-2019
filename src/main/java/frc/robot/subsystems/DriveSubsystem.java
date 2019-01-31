@@ -37,17 +37,24 @@ public class DriveSubsystem extends Subsystem {
 
   public void manualDrive(double move, double turn) {
     
+    double speed = 0.3;
     if (Math.abs(move) < 0.10) {
       move = 0;
     } 
 
-    if (Math.abs(move) > 0.5) {
-      move = 0.5;
-    } 
+    
 
     if (Math.abs(turn) < 0.10) {
       turn = 0;
     }
+
+    if (Math.abs(move) > speed) {
+      move = speed;
+    } 
+
+    if (Math.abs(turn) > speed) {
+      turn = speed;
+    } 
 
     drive.arcadeDrive(move, turn);
   }

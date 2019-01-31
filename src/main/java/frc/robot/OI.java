@@ -9,6 +9,8 @@ package frc.robot;
 
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,7 +23,17 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public Joystick stick = new Joystick(RobotMap.joystickPort);
-  // public Button button = new JoystickButton(stick, buttonNumber);
+    Button buttonA = new JoystickButton(stick, RobotMap.buttonAPort);
+    Button buttonB = new JoystickButton(stick, RobotMap.buttonBPort);
+    Button buttonX = new JoystickButton(stick, RobotMap.buttonXPort);
+    Button buttonY = new JoystickButton(stick, RobotMap.buttonYPort);
+    Button buttonLB = new JoystickButton(stick, RobotMap.buttonLBPort);
+    Button buttonRB = new JoystickButton(stick, RobotMap.buttonRBPort);
+    Button buttonBack = new JoystickButton(stick, RobotMap.buttonBackPort);
+    Button buttonStart = new JoystickButton(stick, RobotMap.buttonStartPort);
+    Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
+    Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
