@@ -32,9 +32,12 @@ public class DriveSubsystem extends Subsystem {
 
   // DifferentialDrive object
   // Motor Controllers assigned to differential drive 
-  public DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
+  public DifferentialDrive drive = new DifferentialDrive(right, left);
 
-  // Constructor
+  public void manualDrive(double move, double turn) {
+    
+    drive.arcadeDrive(move, turn);
+  }
 
   @Override
   public void initDefaultCommand() {

@@ -28,6 +28,7 @@ public class RobotMap {
   // DIO
 
   // CAN
+  // Master is front, slave is rear
   public static int leftMasterPort = 1;
   public static int leftSlavePort = 2;
   public static int rightMasterPort = 3; 
@@ -39,6 +40,6 @@ public class RobotMap {
   // Other Drive Train Constants
 
   // EX: 
-  // public static int wheelDiameter = 6;
+  public static int wheelDiameter = 6;
 
 }
