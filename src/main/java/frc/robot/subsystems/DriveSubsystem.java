@@ -24,16 +24,13 @@ public class DriveSubsystem extends Subsystem {
 
   // Motor Controller Objects
   public PWMVictorSPX leftMaster = new PWMVictorSPX(RobotMap.leftMasterPort);
-  public PWMVictorSPX leftSlave = new PWMVictorSPX(RobotMap.leftSlavePort);
-  public SpeedControllerGroup left = new SpeedControllerGroup(leftMaster, leftSlave);
-
+  
   public PWMVictorSPX rightMaster = new PWMVictorSPX(RobotMap.rightMasterPort);
-  public PWMVictorSPX rightSlave = new PWMVictorSPX(RobotMap.rightSlavePort);
-  public SpeedControllerGroup right = new SpeedControllerGroup(rightMaster, rightSlave);
+ 
 
   // DifferentialDrive object
   // Motor Controllers assigned to differential drive 
-  public DifferentialDrive drive = new DifferentialDrive(right, left);
+  public DifferentialDrive drive = new DifferentialDrive(rightMaster, leftMaster);
 
   public void manualDrive(double move, double turn) {
     

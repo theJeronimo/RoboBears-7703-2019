@@ -30,9 +30,9 @@ public class RobotMap {
   // CAN
   // Master is front, slave is rear
   public static int leftMasterPort = 1;
-  public static int leftSlavePort = 1;
+ 
   public static int rightMasterPort = 2; 
-  public static int rightSlavePort = 2;
+ 
 
   // USB
   public static int joystickPort = 0;
