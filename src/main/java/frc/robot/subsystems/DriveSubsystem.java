@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveManuallyCommand;
 
 /**
  * Add your docs here.
@@ -36,12 +37,20 @@ public class DriveSubsystem extends Subsystem {
 
   public void manualDrive(double move, double turn) {
     
+    if (Math.abs(move) < 0.10) {
+      move = 0;
+    } 
+
+    if (Math.abs(turn) < 0.10) {
+      turn = 0;
+    }
+
     drive.arcadeDrive(move, turn);
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveManuallyCommand());
   }
 }
