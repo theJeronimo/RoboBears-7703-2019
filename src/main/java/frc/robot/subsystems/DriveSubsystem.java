@@ -31,27 +31,38 @@ public class DriveSubsystem extends Subsystem {
   // DifferentialDrive object
   // Motor Controllers assigned to differential drive 
   public DifferentialDrive drive = new DifferentialDrive(rightMaster, leftMaster);
-
+  double maxSpeed = 0.90;
   public void manualDrive(double move, double turn) {
     
-    double speed = 0.3;
+    // double speed = 1.0;
     if (Math.abs(move) < 0.10) {
       move = 0;
-    } 
-
-    
+    }
 
     if (Math.abs(turn) < 0.10) {
       turn = 0;
     }
+    if (Math.abs(move) > maxSpeed) {
+      move = 0;
+    }
 
-    if (Math.abs(move) > speed) {
-      move = speed;
-    } 
+    if (Math.abs(turn) > maxSpeed) {
+      turn = 0;
+    }
 
-    if (Math.abs(turn) > speed) {
-      turn = speed;
-    } 
+    // if (move > speed) {
+    //   move = speed;
+    // } 
+    // if (move < -speed) {
+    //   move = -speed;
+    // } 
+    // if (turn > speed) {
+    //   turn = speed;
+    // } 
+    // if (turn < -speed) {
+    //   turn = -speed;
+    // } 
+    
 
     drive.arcadeDrive(move, turn);
   }
