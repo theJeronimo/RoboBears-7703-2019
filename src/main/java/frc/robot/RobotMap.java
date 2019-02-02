@@ -33,6 +33,8 @@ public class RobotMap {
   public static int tiltPort = 3;
 
   // DIO
+  public static int encoderAPort = 0;
+  public static int encoderBPort = 1;
 
   // CAN
   

@@ -9,17 +9,18 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
 
-/**
- * Add your docs here.
- */
+// ArmPIDSubsystem to "Hook and Hatch"
+
 public class ArmPIDSubsystem extends PIDSubsystem {
   
   // init motors
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
   public PWMVictorSPX tilt = new PWMVictorSPX(RobotMap.tiltPort);
+
 
   // init encoder
   public Encoder encoder = new Encoder(RobotMap.encoderAPort, RobotMap.encoderBPort, false, Encoder.EncodingType.k4X);
@@ -30,7 +31,6 @@ public class ArmPIDSubsystem extends PIDSubsystem {
   private static final double kd = 1.0;
  
 
-  
   // Hook is release and insert height/value
   // Hatch is grab and attach height/value
 
@@ -51,12 +51,11 @@ public class ArmPIDSubsystem extends PIDSubsystem {
   public ArmPIDSubsystem() {
     // Intert a subsystem name and PID values here
     super("ArmPIDSubsystem", kp, ki, kd);
-    // Use these to get going:
-    // setSetpoint() - Sets where the PID controller should move the system
-    // to
-    // enable() - Enables the PID controller.
+    
+    encoder.reset();
+    setSetpoint(firstLevelHook);
+    enable();
   }
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -68,12 +67,13 @@ public class ArmPIDSubsystem extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 0.0;
+    return encoder.get();
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
+    elevator.set(output);
   }
 }
