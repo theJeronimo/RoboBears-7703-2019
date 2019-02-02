@@ -24,13 +24,19 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   // PWM
- 
+    // Drive
+  public static int leftMasterPort = 0;
+  public static int rightMasterPort = 1; 
+
+    // Arm
+  public static int elevatorPort = 2;
+  public static int tiltPort = 3;
+
   // DIO
 
   // CAN
-  // Master is front, slave is rear
-  public static int leftMasterPort = 0;
-  public static int rightMasterPort = 1; 
+  
+  
  
   // USB
   public static int joystickPort = 0;
