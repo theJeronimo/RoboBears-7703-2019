@@ -10,55 +10,60 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.ElevateManually;
 
 // ElevatorPIDSubsystem to "Hook and Hatch"
 
 public class ElevatorPIDSubsystem extends PIDSubsystem {
   
-  // init motors
+  // init motor
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
-  public PWMVictorSPX tilt = new PWMVictorSPX(RobotMap.tiltPort);
-
 
   // init encoder
-  public Encoder encoder = new Encoder(RobotMap.encoderAPort, RobotMap.encoderBPort, false, Encoder.EncodingType.k4X);
+  public Encoder encoder = new Encoder(RobotMap.encoderChannelA, RobotMap.encoderChannelB, false, Encoder.EncodingType.k4X);
+  
 
   // pid constants. test and tune these
-  private static final double kp = 1.0;
-  private static final double ki = 1.0;
-  private static final double kd = 1.0;
+  private static final double kp = 0.01;
+  private static final double ki = 0.0;
+  private static final double kd = 0.0;
+
+
+  // distances measured in inches
+  int setMotorDirection = 0;
+  
  
-
-  // Hook is release and insert height/value
-  // Hatch is grab and attach height/value
-
-  // *** Will have to FIND VALUES FOR ALL ***
-
-    // firstLevel is same for Loading Dock and Hab Cargo Bay
-  public static final double firstLevelHook = 1.2;
-  public static final double firstLevelHatch = 1.5;
-
-    //first Rocket Level needs to be slightly higher than normal due to tilt of arm
-  public static final double firstRocketHook = 1.5;
-  public static final double firstRocketHatch = 1.8;
-
-    // second Rocket Level accommodated to tilt
-  public static final double secondRocketHook = 3.5;
-  public static final double secondRocketHatch = 3.8;
 
   public ElevatorPIDSubsystem() {
     // Intert a subsystem name and PID values here
     super("ElevatorPIDSubsystem", kp, ki, kd);
-    
+    setAbsoluteTolerance(0.005);
+    getPIDController().setContinuous();
+
     encoder.reset();
-    setSetpoint(firstLevelHook);
+    // Must find exact inches
+    encoder.setDistancePerPulse(0.01);
+    
     enable();
   }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    // Move Elevator Manually
+    setDefaultCommand(new ElevateManually());
+  }
+
+  public void elevate(double input) {
+    double height = encoder.getDistance();
+    SmartDashboard.putNumber("height", height);
+    elevator.set(input);
+    
+  }
+
+  public void stop() {
+    elevator.set(0);
   }
 
   @Override
@@ -66,7 +71,8 @@ public class ElevatorPIDSubsystem extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return encoder.get();
+    return encoder.getDistance();
+
   }
 
   @Override

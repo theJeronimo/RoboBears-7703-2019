@@ -6,6 +6,7 @@
 
 package frc.robot;
 
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -33,8 +34,8 @@ public class RobotMap {
   public static int tiltPort = 3;
 
   // DIO
-  public static int encoderAPort = 0;
-  public static int encoderBPort = 1;
+  public static int encoderChannelA = 0;
+  public static int encoderChannelB = 1;
 
   // CAN
   
@@ -52,12 +53,16 @@ public class RobotMap {
   public static int buttonStartPort = 8;
   public static int buttonLeftStickDownPort = 9;
   public static int buttonRightStickDownPort = 10;
+
+  public static int xboxControllerPort = 0;
   
 
   // Other Drive Train Constants
 
   // EX: 
   public static int wheelDiameter = 6;
+
+  public static double elevatorGearDiameter = 3.0;
 
 
 }

@@ -9,6 +9,7 @@ package frc.robot;
 
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -33,6 +34,8 @@ public class OI {
     Button buttonStart = new JoystickButton(stick, RobotMap.buttonStartPort);
     Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
     Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
+
+  public static XboxController xboxController = new XboxController(RobotMap.xboxControllerPort);
 
 
   // There are a few additional built in buttons you can use. Additionally,
