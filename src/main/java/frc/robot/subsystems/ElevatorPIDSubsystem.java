@@ -9,13 +9,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
 
-// ArmPIDSubsystem to "Hook and Hatch"
+// ElevatorPIDSubsystem to "Hook and Hatch"
 
-public class ArmPIDSubsystem extends PIDSubsystem {
+public class ElevatorPIDSubsystem extends PIDSubsystem {
   
   // init motors
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
@@ -48,9 +47,9 @@ public class ArmPIDSubsystem extends PIDSubsystem {
   public static final double secondRocketHook = 3.5;
   public static final double secondRocketHatch = 3.8;
 
-  public ArmPIDSubsystem() {
+  public ElevatorPIDSubsystem() {
     // Intert a subsystem name and PID values here
-    super("ArmPIDSubsystem", kp, ki, kd);
+    super("ElevatorPIDSubsystem", kp, ki, kd);
     
     encoder.reset();
     setSetpoint(firstLevelHook);
