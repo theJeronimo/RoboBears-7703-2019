@@ -31,7 +31,6 @@ public class DriveSubsystem extends Subsystem {
   // DifferentialDrive object
   // Motor Controllers assigned to differential drive 
   public DifferentialDrive drive = new DifferentialDrive(rightMaster, leftMaster);
-  double maxSpeed = 0.90;
   public void manualDrive(double move, double turn) {
     
     // double speed = 1.0;
@@ -42,13 +41,8 @@ public class DriveSubsystem extends Subsystem {
     if (Math.abs(turn) < 0.10) {
       turn = 0;
     }
-    if (Math.abs(move) > maxSpeed) {
-      move = 0;
-    }
-
-    if (Math.abs(turn) > maxSpeed) {
-      turn = 0;
-    }
+    move = move * RobotMap.moveSpeedMultiplyer;
+    turn = turn * RobotMap.turnSpeedMultiplyer;
 
     // if (move > speed) {
     //   move = speed;

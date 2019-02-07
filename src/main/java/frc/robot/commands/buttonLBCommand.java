@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class DriveManuallyCommand extends Command {
-  public DriveManuallyCommand() {
+public class buttonLBCommand extends Command {
+  public buttonLBCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.driveSubsystem);
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -25,12 +25,11 @@ public class DriveManuallyCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    double move = -Robot.oi.stick.getY();
-    double turn = Robot.oi.stick.getX();
-
-    Robot.driveSubsystem.manualDrive(move, turn);
-
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0)
+    RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - 0.1;
+    System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+    RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - 0.05;
+    System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
   }
 
   // Make this return true when this Command no longer needs to run execute()
