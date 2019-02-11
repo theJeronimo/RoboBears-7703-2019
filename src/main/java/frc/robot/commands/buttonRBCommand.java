@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class buttonRBCommand extends Command {
   public buttonRBCommand() {
@@ -25,9 +24,8 @@ public class buttonRBCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.moveSpeedMultiplyer < 1 && RobotMap.turnSpeedMultiplyer < 1)
-    RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer + 0.1;
-    RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer + 0.05;
+    // increaseSpeedMultiplier by move: 0.1, turn: 0,05
+    Robot.driveSubsystem.increaseSpeedMultiplier(0.1, 0.05);
   }
 
   // Make this return true when this Command no longer needs to run execute()

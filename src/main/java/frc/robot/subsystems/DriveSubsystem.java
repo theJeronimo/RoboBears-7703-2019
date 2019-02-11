@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -48,11 +47,21 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void lowerSpeedMultiplier(double move, double turn) {
-    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0)
-    RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - move;
-    System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
-    RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - turn;
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0) { 
+      RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - move;
+      System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+      RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - turn;
+      System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
+    }
+  }
+
+  public void increaseSpeedMultiplier(double move, double turn) {
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0) {
+      RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer + move;
+     System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+      RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer + turn;
     System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
+    }
   }
 
   @Override
