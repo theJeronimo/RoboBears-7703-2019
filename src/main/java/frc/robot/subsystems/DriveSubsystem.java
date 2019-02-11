@@ -41,24 +41,18 @@ public class DriveSubsystem extends Subsystem {
     if (Math.abs(turn) < 0.10) {
       turn = 0;
     }
-    move = move * RobotMap.moveSpeedMultiplyer;
-    turn = turn * RobotMap.turnSpeedMultiplyer;
-
-    // if (move > speed) {
-    //   move = speed;
-    // } 
-    // if (move < -speed) {
-    //   move = -speed;
-    // } 
-    // if (turn > speed) {
-    //   turn = speed;
-    // } 
-    // if (turn < -speed) {
-    //   turn = -speed;
-    // } 
-    
+    move *= RobotMap.moveSpeedMultiplyer;
+    turn *= RobotMap.turnSpeedMultiplyer;
 
     drive.arcadeDrive(move, turn);
+  }
+
+  public void lowerSpeedMultiplier(double move, double turn) {
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0)
+    RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - move;
+    System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+    RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - turn;
+    System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
   }
 
   @Override

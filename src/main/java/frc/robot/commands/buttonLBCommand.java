@@ -25,11 +25,7 @@ public class buttonLBCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0)
-    RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - 0.1;
-    System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
-    RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - 0.05;
-    System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
+   
   }
 
   // Make this return true when this Command no longer needs to run execute()
