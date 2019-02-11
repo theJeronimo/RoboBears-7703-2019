@@ -24,9 +24,12 @@ public class DriveManuallyCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    double move = -Robot.oi.stick.getY();
-    double turn = Robot.oi.stick.getX();
+    double moveSpeed = Robot.oi.stick.getY();
+    double turnSpeed = Robot.oi.stick.getX();
+    // Exponential function to make acceleration smoother
+    // (x/|x|)*((10^|x|-1)/9)
+    double move = Robot.driveSubsystem.expSpeed(moveSpeed);
+    double turn = Robot.driveSubsystem.expSpeed(turnSpeed);
 
     Robot.driveSubsystem.manualDrive(move, turn);
 

@@ -50,8 +50,8 @@ public class RobotMap {
 
   // EX: 
   public static int wheelDiameter = 6;
-  public static double moveSpeedMultiplyer = 0.6;
-  public static double turnSpeedMultiplyer = 0.6;
+  public static double moveSpeedMultiplyer = 1.0;
+  public static double turnSpeedMultiplyer = 1.0;
 
 
 

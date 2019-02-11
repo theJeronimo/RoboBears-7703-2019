@@ -64,6 +64,10 @@ public class DriveSubsystem extends Subsystem {
     }
   }
 
+  public double expSpeed(double speed) {
+    return (speed/Math.abs(speed)) * (Math.pow(10, Math.abs(speed)) - 1)/9;
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
