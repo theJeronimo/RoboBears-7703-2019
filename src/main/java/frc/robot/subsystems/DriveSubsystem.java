@@ -33,11 +33,12 @@ public class DriveSubsystem extends Subsystem {
   public void manualDrive(double move, double turn) {
     
     // double speed = 1.0;
-    if (Math.abs(move) < 0.10) {
+    double joystickFloat = 0.05;
+    if (Math.abs(move) < joystickFloat) {
       move = 0;
     }
 
-    if (Math.abs(turn) < 0.10) {
+    if (Math.abs(turn) < joystickFloat) {
       turn = 0;
     }
     move *= RobotMap.moveSpeedMultiplyer;
@@ -64,6 +65,7 @@ public class DriveSubsystem extends Subsystem {
     }
   }
 
+  // (x/|x|)*((10^|x|-1)/9)
   public double expSpeed(double speed) {
     return (speed/Math.abs(speed)) * (Math.pow(10, Math.abs(speed)) - 1)/9;
   }
