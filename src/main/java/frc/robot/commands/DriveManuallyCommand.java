@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -26,6 +27,9 @@ public class DriveManuallyCommand extends Command {
   protected void execute() {
     double moveSpeed = Robot.oi.stick.getY();
     double turnSpeed = Robot.oi.stick.getX();
+    // double moveSpeed = Robot.oi.xboxController.getY(Hand.kLeft);
+    // double turnSpeed = Robot.oi.xboxController.getX(Hand.kRight);
+    
     // Exponential function to make acceleration smoother
     // (x/|x|)*((10^|x|-1)/9)
     double move = Robot.driveSubsystem.expSpeed(moveSpeed);

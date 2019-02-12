@@ -34,16 +34,8 @@ public class RobotMap {
  
   // USB
   public static int joystickPort = 0;
-  public static int buttonAPort = 1;
-  public static int buttonBPort = 2;
-  public static int buttonXPort = 3;
-  public static int buttonYPort = 4;
-  public static int buttonLBPort = 5;
-  public static int buttonRBPort = 6;
-  public static int buttonBackPort = 7;
-  public static int buttonStartPort = 8;
-  public static int buttonLeftStickDownPort = 9;
-  public static int buttonRightStickDownPort = 10;
+  public static int rightStickX = 4;
+  public static int leftStickY = 1;
   
 
   // Other Drive Train Constants
