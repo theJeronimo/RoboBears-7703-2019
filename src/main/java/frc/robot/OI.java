@@ -46,9 +46,9 @@ public class OI {
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
   public OI() {
-    buttonLB.whileHeld(new speedMultiplyerDown());
+    buttonLB.whenPressed(new speedMultiplyerDown());
     System.out.println(buttonLB);
-    buttonRB.whileHeld(new speedMultiplyerUp());
+    buttonRB.whenPressed(new speedMultiplyerUp());
     System.out.println(buttonRB);
   }
   //// TRIGGERING COMMANDS WITH BUTTONS

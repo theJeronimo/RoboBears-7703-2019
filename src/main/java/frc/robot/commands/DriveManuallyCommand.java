@@ -25,17 +25,17 @@ public class DriveManuallyCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(RobotMap.moveSpeedMultiplyer < 0.1){
-      RobotMap.moveSpeedMultiplyer = 0.1;
+    if(RobotMap.moveSpeedMultiplyer < 0.3){
+      RobotMap.moveSpeedMultiplyer = 0.3;
     }
-    if(RobotMap.moveSpeedMultiplyer > 1){
-      RobotMap.moveSpeedMultiplyer = 1;
+    if(RobotMap.moveSpeedMultiplyer > 0.9){
+      RobotMap.moveSpeedMultiplyer = 0.9;
     }
-    if(RobotMap.turnSpeedMultiplyer < 0.1){
-      RobotMap.turnSpeedMultiplyer = 0.1;
+    if(RobotMap.turnSpeedMultiplyer < 0.3){
+      RobotMap.turnSpeedMultiplyer = 0.3;
     }
-    if(RobotMap.turnSpeedMultiplyer > 1){
-      RobotMap.turnSpeedMultiplyer = 1;
+    if(RobotMap.turnSpeedMultiplyer > 0.9){
+      RobotMap.turnSpeedMultiplyer = 0.9;
     }
 
     double moveSpeed = Robot.oi.stick.getY();
