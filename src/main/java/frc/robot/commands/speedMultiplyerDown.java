@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class buttonRBCommand extends Command {
-  public buttonRBCommand() {
+public class speedMultiplyerDown extends Command {
+  public speedMultiplyerDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.driveSubsystem);
@@ -25,8 +25,8 @@ public class buttonRBCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // increaseSpeedMultiplier by move: 0.1, turn: 0,05
-    Robot.driveSubsystem.increaseSpeedMultiplier(0.1, 0.05);
+    // lowerSpeedMultiplier by move: 0.1, turn: 0.05
+    Robot.driveSubsystem.lowerSpeedMultiplier(0.1, 0.1);
   }
 
   // Make this return true when this Command no longer needs to run execute()

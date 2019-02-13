@@ -48,7 +48,7 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void lowerSpeedMultiplier(double move, double turn) {
-    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0) { 
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0&&RobotMap.moveSpeedMultiplyer < 1 && RobotMap.turnSpeedMultiplyer < 1) { 
       RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - move;
       System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
       RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - turn;
@@ -57,7 +57,7 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void increaseSpeedMultiplier(double move, double turn) {
-    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0) {
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0&&RobotMap.moveSpeedMultiplyer < 1 && RobotMap.turnSpeedMultiplyer < 1) {
       RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer + move;
      System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
       RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer + turn;

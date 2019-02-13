@@ -7,9 +7,9 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class DriveManuallyCommand extends Command {
   public DriveManuallyCommand() {
@@ -25,6 +25,19 @@ public class DriveManuallyCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(RobotMap.moveSpeedMultiplyer < 0.1){
+      RobotMap.moveSpeedMultiplyer = 0.1;
+    }
+    if(RobotMap.moveSpeedMultiplyer > 1){
+      RobotMap.moveSpeedMultiplyer = 1;
+    }
+    if(RobotMap.turnSpeedMultiplyer < 0.1){
+      RobotMap.turnSpeedMultiplyer = 0.1;
+    }
+    if(RobotMap.turnSpeedMultiplyer > 1){
+      RobotMap.turnSpeedMultiplyer = 1;
+    }
+
     double moveSpeed = Robot.oi.stick.getY();
     double turnSpeed = Robot.oi.stick.getX();
     // double moveSpeed = Robot.oi.xboxController.getY(Hand.kLeft);
