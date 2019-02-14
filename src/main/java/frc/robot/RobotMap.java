@@ -60,9 +60,6 @@ public class RobotMap {
   // Other Drive Train Constants
 
   // EX: 
-  public static int wheelDiameter = 6;
-
-  public static double elevatorGearDiameter = 3.0;
 
 
 }

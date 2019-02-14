@@ -35,7 +35,9 @@ public class OI {
     Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
     Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
 
-  public XboxController xboxController = new XboxController(RobotMap.xboxControllerPort);
+  public OI() {
+    
+  }
   
 
 
