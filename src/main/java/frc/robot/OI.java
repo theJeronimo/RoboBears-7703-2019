@@ -9,7 +9,7 @@ package frc.robot;
 
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -22,23 +22,33 @@ public class OI {
   //// joystick.
   // You create one by telling it which joystick it's on and which button
   // number it is.
-  public Joystick stick = new Joystick(RobotMap.joystickPort);
-    Button buttonA = new JoystickButton(stick, RobotMap.buttonAPort);
-    Button buttonB = new JoystickButton(stick, RobotMap.buttonBPort);
-    Button buttonX = new JoystickButton(stick, RobotMap.buttonXPort);
-    Button buttonY = new JoystickButton(stick, RobotMap.buttonYPort);
-    Button buttonLB = new JoystickButton(stick, RobotMap.buttonLBPort);
-    Button buttonRB = new JoystickButton(stick, RobotMap.buttonRBPort);
-    Button buttonBack = new JoystickButton(stick, RobotMap.buttonBackPort);
-    Button buttonStart = new JoystickButton(stick, RobotMap.buttonStartPort);
-    Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
-    Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
+  public static Joystick stick = new Joystick(RobotMap.joystickPort);
+  public static JoystickButton rightStickX = new JoystickButton(stick, RobotMap.rightStickX);
+  public static JoystickButton leftStickY = new JoystickButton(stick, RobotMap.leftStickY);
+  public static Button buttonA = new JoystickButton(stick, RobotMap.buttonAPort);
+  public static Button buttonB = new JoystickButton(stick, RobotMap.buttonBPort);
+  public static Button buttonX = new JoystickButton(stick, RobotMap.buttonXPort);
+  public static Button buttonY = new JoystickButton(stick, RobotMap.buttonYPort);
+  public static Button buttonLB = new JoystickButton(stick, RobotMap.buttonLBPort);
+  public static Button buttonRB = new JoystickButton(stick, RobotMap.buttonRBPort);
+  public static Button buttonBack = new JoystickButton(stick, RobotMap.buttonBackPort);
+  public static Button buttonStart = new JoystickButton(stick, RobotMap.buttonStartPort);
+  public static Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
+  public static Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
+
+  public static XboxController xboxController = new XboxController(RobotMap.joystickPort);
+  
 
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
-
+  public OI() {
+    buttonLB.whenPressed(new speedMultiplyerDown());
+    System.out.println(buttonLB);
+    buttonRB.whenPressed(new speedMultiplyerUp());
+    System.out.println(buttonRB);
+  }
   //// TRIGGERING COMMANDS WITH BUTTONS
   // Once you have a button, it's trivial to bind it to a button in one of
   // three ways:
