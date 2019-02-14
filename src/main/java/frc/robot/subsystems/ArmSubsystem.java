@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.ElevateUp;
 
 /**
  * Add your docs here.
@@ -20,18 +21,19 @@ public class ArmSubsystem extends Subsystem {
 
   // Motor Controller Objects
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
-  public PWMVictorSPX tilt = new PWMVictorSPX(RobotMap.tiltPort);
+  public PWMVictorSPX slide = new PWMVictorSPX(RobotMap.tiltPort);
 
   public void moveElevator(double speed) {
     elevator.set(speed);
   }
 
-  public void tiltArm(double speed)  {
-    tilt.set(speed);
+  public void slide(double speed)  {
+    slide.set(speed);
   }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ElevateUp());
   }
 }
