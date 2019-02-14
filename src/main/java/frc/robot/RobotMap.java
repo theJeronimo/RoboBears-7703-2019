@@ -31,11 +31,10 @@ public class RobotMap {
 
     // Arm
   public static int elevatorPort = 2;
-  public static int tiltPort = 3;
+  public static int slidePort = 3;
 
   // DIO
-  public static int encoderChannelA = 0;
-  public static int encoderChannelB = 1;
+
 
   // CAN
   

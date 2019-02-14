@@ -21,7 +21,7 @@ public class ArmSubsystem extends Subsystem {
 
   // Motor Controller Objects
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
-  public PWMVictorSPX slide = new PWMVictorSPX(RobotMap.tiltPort);
+  public PWMVictorSPX slide = new PWMVictorSPX(RobotMap.slidePort);
 
   public void moveElevator(double speed) {
     elevator.set(speed);
