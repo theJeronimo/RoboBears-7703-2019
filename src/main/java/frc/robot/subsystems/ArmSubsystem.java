@@ -14,6 +14,7 @@ import frc.robot.commands.ElevateUp;
 
 /**
  * Add your docs here.
+ slide and move elevator. 
  */
 public class ArmSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
