@@ -9,12 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class DriveManuallyCommand extends Command {
-  public DriveManuallyCommand() {
+
+public class ElevateUp extends Command {
+  public ElevateUp() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.driveSubsystem);
+    // eg. requires(chassis);
+    requires(Robot.armSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,29 +26,7 @@ public class DriveManuallyCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(RobotMap.moveSpeedMultiplyer < 0.3){
-      RobotMap.moveSpeedMultiplyer = 0.3;
-    }
-    if(RobotMap.moveSpeedMultiplyer > 0.9){
-      RobotMap.moveSpeedMultiplyer = 0.9;
-    }
-    if(RobotMap.turnSpeedMultiplyer < 0.3){
-      RobotMap.turnSpeedMultiplyer = 0.3;
-    }
-    if(RobotMap.turnSpeedMultiplyer > 0.9){
-      RobotMap.turnSpeedMultiplyer = 0.9;
-    }
-
-    double moveSpeed = Robot.oi.stick.getY();
-    double turnSpeed = Robot.oi.stick.getX();
-    
-    // Exponential function to make acceleration smoother
-    // (x/|x|)*((10^|x|-1)/9)
-    double move = Robot.driveSubsystem.expSpeed(moveSpeed);
-    double turn = Robot.driveSubsystem.expSpeed(turnSpeed);
-
-    Robot.driveSubsystem.manualDrive(move, turn);
-
+    Robot.armSubsystem.moveElevator(0.4);
   }
 
   // Make this return true when this Command no longer needs to run execute()

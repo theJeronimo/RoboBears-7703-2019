@@ -11,6 +11,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ElevateDown;
+import frc.robot.commands.ElevateUp;
+import frc.robot.commands.StopElevator;
+import frc.robot.commands.SlideBackward;
+import frc.robot.commands.SlideForward;
+import frc.robot.commands.StopSlide;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,8 +29,6 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public static Joystick stick = new Joystick(RobotMap.joystickPort);
-  public static JoystickButton rightStickX = new JoystickButton(stick, RobotMap.rightStickX);
-  public static JoystickButton leftStickY = new JoystickButton(stick, RobotMap.leftStickY);
   public static Button buttonA = new JoystickButton(stick, RobotMap.buttonAPort);
   public static Button buttonB = new JoystickButton(stick, RobotMap.buttonBPort);
   public static Button buttonX = new JoystickButton(stick, RobotMap.buttonXPort);
@@ -36,14 +40,23 @@ public class OI {
   public static Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
   public static Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
 
-  public static XboxController xboxController = new XboxController(RobotMap.joystickPort);
-  
-
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
   public OI() {
+
+   
+    buttonY.whenPressed(new ElevateUp());
+    buttonY.whenReleased(new StopElevator());
+    buttonX.whenPressed(new ElevateDown());
+    buttonX.whenReleased(new StopElevator());
+    
+    buttonB.whenPressed(new SlideForward());
+    buttonB.whenReleased(new StopSlide());
+    buttonA.whenPressed(new SlideBackward());
+    buttonA.whenReleased(new StopSlide());
+
     buttonLB.whenPressed(new speedMultiplyerDown());
     System.out.println(buttonLB);
     buttonRB.whenPressed(new speedMultiplyerUp());
