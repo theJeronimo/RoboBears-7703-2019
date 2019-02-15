@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ElevateDown;
 import frc.robot.commands.ElevateUp;
+import frc.robot.commands.StopElevator;
 import frc.robot.commands.SlideBackward;
 import frc.robot.commands.SlideForward;
 import frc.robot.commands.StopSlide;
