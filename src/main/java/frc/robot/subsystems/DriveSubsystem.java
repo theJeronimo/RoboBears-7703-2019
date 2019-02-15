@@ -30,40 +30,44 @@ public class DriveSubsystem extends Subsystem {
   // DifferentialDrive object
   // Motor Controllers assigned to differential drive 
   public DifferentialDrive drive = new DifferentialDrive(rightMaster, leftMaster);
-  double maxSpeed = 0.90;
   public void manualDrive(double move, double turn) {
     
     // double speed = 1.0;
-    if (Math.abs(move) < 0.10) {
+    double joystickFloat = 0.05;
+    if (Math.abs(move) < joystickFloat) {
       move = 0;
     }
 
-    if (Math.abs(turn) < 0.10) {
+    if (Math.abs(turn) < joystickFloat) {
       turn = 0;
     }
-    if (Math.abs(move) > maxSpeed) {
-      move = 0;
-    }
-
-    if (Math.abs(turn) > maxSpeed) {
-      turn = 0;
-    }
-
-    // if (move > speed) {
-    //   move = speed;
-    // } 
-    // if (move < -speed) {
-    //   move = -speed;
-    // } 
-    // if (turn > speed) {
-    //   turn = speed;
-    // } 
-    // if (turn < -speed) {
-    //   turn = -speed;
-    // } 
-    
+    move *= RobotMap.moveSpeedMultiplyer;
+    turn *= RobotMap.turnSpeedMultiplyer;
 
     drive.arcadeDrive(move, turn);
+  }
+
+  public void lowerSpeedMultiplier(double move, double turn) {
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0&&RobotMap.moveSpeedMultiplyer < 1 && RobotMap.turnSpeedMultiplyer < 1) { 
+      RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer - move;
+      System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+      RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer - turn;
+      System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
+    }
+  }
+
+  public void increaseSpeedMultiplier(double move, double turn) {
+    if (RobotMap.moveSpeedMultiplyer > 0 && RobotMap.turnSpeedMultiplyer > 0&&RobotMap.moveSpeedMultiplyer < 1 && RobotMap.turnSpeedMultiplyer < 1) {
+      RobotMap.moveSpeedMultiplyer = RobotMap.moveSpeedMultiplyer + move;
+     System.out.println("Move " + RobotMap.moveSpeedMultiplyer);
+      RobotMap.turnSpeedMultiplyer = RobotMap.turnSpeedMultiplyer + turn;
+    System.out.println("Turn " + RobotMap.turnSpeedMultiplyer);
+    }
+  }
+
+  // (x/|x|)*((10^|x|-1)/9)
+  public double expSpeed(double speed) {
+    return (speed/Math.abs(speed)) * (Math.pow(10, Math.abs(speed)) - 1)/9;
   }
 
   @Override

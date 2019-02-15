@@ -9,7 +9,7 @@ package frc.robot;
 
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ElevateDown;
 import frc.robot.commands.ElevateUp;
@@ -38,20 +38,28 @@ public class OI {
   public static Button buttonStart = new JoystickButton(stick, RobotMap.buttonStartPort);
   public static Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
   public static Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
-    
 
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
   public OI() {
+
    
     buttonY.whenPressed(new ElevateUp());
+    buttonY.whenReleased(new StopElevator());
     buttonX.whenPressed(new ElevateDown());
+    buttonX.whenReleased(new StopElevator());
+    
     buttonB.whenPressed(new SlideForward());
     buttonB.whenReleased(new StopSlide());
     buttonA.whenPressed(new SlideBackward());
     buttonA.whenReleased(new StopSlide());
+
+    buttonLB.whenPressed(new speedMultiplyerDown());
+    System.out.println(buttonLB);
+    buttonRB.whenPressed(new speedMultiplyerUp());
+    System.out.println(buttonRB);
   }
   //// TRIGGERING COMMANDS WITH BUTTONS
   // Once you have a button, it's trivial to bind it to a button in one of

@@ -9,51 +9,31 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class DriveManuallyCommand extends Command {
-  public DriveManuallyCommand() {
+public class speedMultiplyerUp extends Command {
+  public speedMultiplyerUp() {
     // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.driveSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.driveSubsystem.increaseSpeedMultiplier(0.1, 0.1);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(RobotMap.moveSpeedMultiplyer < 0.3){
-      RobotMap.moveSpeedMultiplyer = 0.3;
-    }
-    if(RobotMap.moveSpeedMultiplyer > 0.9){
-      RobotMap.moveSpeedMultiplyer = 0.9;
-    }
-    if(RobotMap.turnSpeedMultiplyer < 0.3){
-      RobotMap.turnSpeedMultiplyer = 0.3;
-    }
-    if(RobotMap.turnSpeedMultiplyer > 0.9){
-      RobotMap.turnSpeedMultiplyer = 0.9;
-    }
-
-    double moveSpeed = Robot.oi.stick.getY();
-    double turnSpeed = Robot.oi.stick.getX();
+    // increaseSpeedMultiplier by move: 0.1, turn: 0,05
     
-    // Exponential function to make acceleration smoother
-    // (x/|x|)*((10^|x|-1)/9)
-    double move = Robot.driveSubsystem.expSpeed(moveSpeed);
-    double turn = Robot.driveSubsystem.expSpeed(turnSpeed);
-
-    Robot.driveSubsystem.manualDrive(move, turn);
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
