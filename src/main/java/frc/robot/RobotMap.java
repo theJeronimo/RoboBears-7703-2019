@@ -30,8 +30,8 @@ public class RobotMap {
   public static int rightMasterPort = 1; 
 
     // Arm
-  public static int elevatorPort = 2;
-  public static int slidePort = 8;
+  public static int elevatorPort = 8;
+  public static int slidePort = 9;
 
   // DIO
 
