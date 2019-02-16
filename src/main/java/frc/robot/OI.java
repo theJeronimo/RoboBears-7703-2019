@@ -10,6 +10,7 @@ package frc.robot;
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ElevateDown;
 import frc.robot.commands.ElevateUp;
@@ -17,6 +18,8 @@ import frc.robot.commands.StopElevator;
 import frc.robot.commands.SlideBackward;
 import frc.robot.commands.SlideForward;
 import frc.robot.commands.StopSlide;
+import frc.robot.commands.speedMultiplyerDown;
+import frc.robot.commands.speedMultiplyerUp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
