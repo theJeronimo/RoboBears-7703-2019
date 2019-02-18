@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.ElevateUp;
+import frc.robot.commands.StopSlide;
 
 /**
  * Add your docs here.
@@ -35,6 +35,6 @@ public class ArmSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new ElevateUp());
+    setDefaultCommand(new StopSlide());
   }
 }
