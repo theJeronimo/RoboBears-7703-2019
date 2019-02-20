@@ -17,19 +17,13 @@ import frc.robot.commands.DriveManuallyCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 
-
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
- * project.
- */
 public class Robot extends TimedRobot {
-  // initialize DriveSubsystem
+
+  //Initialize DriveSubsystem
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static ArmSubsystem armSubsystem = new ArmSubsystem();
-  
+  //? Should this (^) be in robotInit as it is intializing something?
+
   public static OI oi;
 
   Command autonomousCommand;
@@ -44,19 +38,15 @@ public class Robot extends TimedRobot {
     CameraServer.getInstance().startAutomaticCapture();
     oi = new OI();
     chooser.setDefaultOption("Default Auto", new DriveManuallyCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   /*
+   robotPeriodic runs every once in 
+   awhile and should be used for diagnostic 
+   purposes
    */
-  @Override
+   @Override
   public void robotPeriodic() {
   }
 

@@ -12,26 +12,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.StopSlide;
 
-/**
- * Add your docs here.
- slide and move elevator. 
- */
 public class ArmSubsystem extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
 
   // Motor Controller Objects
   public PWMVictorSPX elevator = new PWMVictorSPX(RobotMap.elevatorPort);
   public PWMVictorSPX slide = new PWMVictorSPX(RobotMap.slidePort);
 
+  //called in ElevateUp, ElevateDown, StopElevator
   public void moveElevator(double speed) {
     elevator.set(speed);
   }
-
+  
+  //called in SlideFowards, SlideBackwards, StopSlide
   public void slide(double speed)  {
     slide.set(speed);
   }
+
   @Override
+
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());

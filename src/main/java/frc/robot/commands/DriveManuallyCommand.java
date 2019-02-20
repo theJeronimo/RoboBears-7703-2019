@@ -13,18 +13,21 @@ import frc.robot.RobotMap;
 
 public class DriveManuallyCommand extends Command {
   public DriveManuallyCommand() {
-    // Use requires() here to declare subsystem dependencies
     requires(Robot.driveSubsystem);
   }
 
-  // Called just before this Command runs the first time
   @Override
+
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
+
   protected void execute() {
+
+    //Limits speed from being too slow,
+    //below 0, too high, or above 1
+    //This removes alot of issues
     if(RobotMap.moveSpeedMultiplyer < 0.3){
       RobotMap.moveSpeedMultiplyer = 0.3;
     }
@@ -38,6 +41,7 @@ public class DriveManuallyCommand extends Command {
       RobotMap.turnSpeedMultiplyer = 0.9;
     }
 
+    //Gets current stick positions
     double moveSpeed = Robot.oi.stick.getY();
     double turnSpeed = Robot.oi.stick.getX();
     
@@ -46,8 +50,8 @@ public class DriveManuallyCommand extends Command {
     double move = Robot.driveSubsystem.expSpeed(moveSpeed);
     double turn = Robot.driveSubsystem.expSpeed(turnSpeed);
 
+    //Moves robot after going into drive command
     Robot.driveSubsystem.manualDrive(move, turn);
-
   }
 
   // Make this return true when this Command no longer needs to run execute()

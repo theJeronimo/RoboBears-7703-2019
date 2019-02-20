@@ -9,7 +9,6 @@ package frc.robot;
 
 //Imported Joystick Class (Right Click -> Source Action.. -> Import)
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ElevateDown;
@@ -20,17 +19,14 @@ import frc.robot.commands.SlideForward;
 import frc.robot.commands.StopSlide;
 import frc.robot.commands.speedMultiplyerDown;
 import frc.robot.commands.speedMultiplyerUp;
+//import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
+  
   public static Joystick stick = new Joystick(RobotMap.joystickPort);
   public static Button buttonA = new JoystickButton(stick, RobotMap.buttonAPort);
   public static Button buttonB = new JoystickButton(stick, RobotMap.buttonBPort);
@@ -43,41 +39,27 @@ public class OI {
   public static Button buttonLeftStickDown = new JoystickButton(stick, RobotMap.buttonLeftStickDownPort);
   public static Button buttonRightStickDown = new JoystickButton(stick, RobotMap.buttonRightStickDownPort);
 
-
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
   public OI() {
 
-   
+    //Elevator movment
     buttonY.whenPressed(new ElevateUp());
     buttonY.whenReleased(new StopElevator());
     buttonX.whenPressed(new ElevateDown());
     buttonX.whenReleased(new StopElevator());
     
+    //Slide movment
     buttonB.whenPressed(new SlideForward());
     buttonB.whenReleased(new StopSlide());
     buttonA.whenPressed(new SlideBackward());
     buttonA.whenReleased(new StopSlide());
 
+    //Changing Speed Multiplyers
     buttonLB.whenPressed(new speedMultiplyerDown());
     System.out.println(buttonLB);
     buttonRB.whenPressed(new speedMultiplyerUp());
     System.out.println(buttonRB);
   }
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  //button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
 }
