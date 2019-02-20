@@ -17,7 +17,7 @@ public class SlideForward extends Command {
     requires(Robot.armSubsystem);
   }
 
-  // Called just before this Command runs the first time
+  // Called just; before this Command runs the first time
   @Override
   protected void initialize() {
   }
@@ -25,7 +25,7 @@ public class SlideForward extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.armSubsystem.slide(0.2);
+    Robot.armSubsystem.slide(0.35);
   }
 
   // Make this return true when this Command no longer needs to run execute()
